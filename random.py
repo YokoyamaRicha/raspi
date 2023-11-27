@@ -42,10 +42,10 @@ def inspect():
     time.sleep(4)
 
 def active():
-  a=random.randint(-3, 3)+random.randint(0,9)*0.1
-  b=random.randint(-3, 3)+random.randint(0,9)*0.1
-  print("[-3.63,-2.04,1.58,-1.73"+str(a)+str(b)+"]")
-  s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,a,b], a=0.50, v=0.50)"+"\n"))
+  c=random.randint(-3, 3)+random.randint(0,9)*0.1
+  d=random.randint(-3, 3)+random.randint(0,9)*0.1
+  print("[-3.63,-2.04,1.58,-1.73"+str(c)+str(d)+"]")
+  s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,c,d], a=0.50, v=0.50)"+"\n"))
   time.sleep(3)
   
 
