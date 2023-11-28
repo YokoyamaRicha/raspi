@@ -3,6 +3,9 @@ import gripper
 import RPi.GPIO as GPIO   #for using GPIO 
 import time      #time control
 import random
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 HOST = "150.89.169.116"
 PORT = 30002
