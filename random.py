@@ -14,6 +14,8 @@ cam_trg = 26
 
 senser_sampling = 0.05
 
+global damage=0
+
 
 GPIO.setwarnings(False)       #disregard warnings
 GPIO.setmode(GPIO.BCM)
@@ -34,6 +36,7 @@ def main():
   while True:
     inspect()
     active()
+    
     active()
     
 
@@ -42,10 +45,13 @@ def inspect():
     time.sleep(4)
 
 def active():
+  global damage
   r=random.randint(1, 13)+random.randint(0,9)*0.1
   if r==1:
     s.send(toBytes("movej([-4.35,-2.60,2.15,-2.10,-0.86,0.87], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
+    if flag:
+      damage=1
   if r==2:
     s.send(toBytes("movej([-3.37,-1.16,0.39,-0.54,-2.00,1.22], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
@@ -82,7 +88,12 @@ def active():
   if r==13:
     s.send(toBytes("movej([-3.96,-2.35,1.94,-2.05,-1.27,0.04], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
+
+def memories():
+  global damage
+
   
+    
 
 if __name__ == '__main__':
     main()
