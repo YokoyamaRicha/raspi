@@ -84,30 +84,6 @@ def active():
     time.sleep(3)
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     main()
     s.close()
