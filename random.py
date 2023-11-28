@@ -73,7 +73,7 @@ def active():
   if r==10:
     s.send(toBytes("movej([-3.29,-1.31,0.68,-0.73,-2.11,0.90] a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
-  if r==
+  if r==11
     s.send(toBytes("movej([-3.12,-1.34,0.90,-0.71,-2.38,1.24], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
   if r==12:
