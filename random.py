@@ -53,6 +53,7 @@ def active():
     time.sleep(3)
     if flag:
       damage=1
+      memories()
   if r==2:
     s.send(toBytes("movej([-3.37,-1.16,0.39,-0.54,-2.00,1.22], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
@@ -92,6 +93,7 @@ def active():
 
 def memories():
   global damage
+  list_d.append(damage)
 
   
     
