@@ -16,6 +16,7 @@ senser_sampling = 0.05
 
 global damage=0
 
+list_d = []
 
 GPIO.setwarnings(False)       #disregard warnings
 GPIO.setmode(GPIO.BCM)
