@@ -16,6 +16,7 @@ g.activate()
 def main():
   while True:
     home()
+    time.sleep(3)
     grip()
     g.move_and_wait_for_pos(165, 255, 220)
     home()
@@ -28,6 +29,7 @@ def main():
     home()
     grip()
     g.move_and_wait_for_pos(0, 255, 255)
+    
     
 
 def log_info(g):
