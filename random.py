@@ -21,6 +21,8 @@ global damage=0
 
 list_d = [0,0,0,0,0,0,0,0,0,0,0,0,0]
 
+epsilon = 0.7
+
 GPIO.setwarnings(False)       #disregard warnings
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Tring, GPIO.OUT)   #set pin27 out mode
@@ -48,12 +50,12 @@ def epsilon_greedy_selection(epsilon, values, a, b, c):
         epsilon-greedy 行動選択
     """
     nb_values = len(values)
-    values[1]=values[1]+b
-    values[2]=values[2]+c
-    if np.random.uniform() < epsilon:   # 探索(epsilonの確率で)
+    if np.random.uniform() > epsilon:   # 知識活用(1-epsilonの確率で)
+        action = np.argmax(list_d)
+    else:                               # 探索(epsilonの確率で)
         action = np.random.randint(0, nb_values)
-    else:                               # 知識利用(1-epsilonの確率で)
         action = np.argmax(values)
+      
 
     return action
 
