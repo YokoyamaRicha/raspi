@@ -17,7 +17,7 @@ def main():
   while True:
     home()
     grip()
-    
+    g.move_and_wait_for_pos(165, 255, 220)
     inspect()
     active()
     active()
