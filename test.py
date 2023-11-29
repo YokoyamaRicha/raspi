@@ -26,6 +26,8 @@ def main():
     active()
     inspect()
     home()
+    grip()
+    g.move_and_wait_for_pos(0, 255, 255)
     
 
 def log_info(g):
