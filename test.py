@@ -13,6 +13,14 @@ g = gripper.RobotiqGripper()
 g.connect(HOST, 63352)
 g.activate()
 
+def log_info(g):
+    print(f"Pos: {str(g.get_current_position()): >3} "
+          f"Open: {g.is_open(): <2} "
+          f"Closed: {g.is_closed(): <2} ")
+    
+def toBytes(str):
+    return bytes(str.encode())
+  
 def main():
   while True:
     home()
@@ -30,15 +38,6 @@ def main():
     grip()
     g.move_and_wait_for_pos(0, 255, 255)
     
-    
-
-def log_info(g):
-    print(f"Pos: {str(g.get_current_position()): >3} "
-          f"Open: {g.is_open(): <2} "
-          f"Closed: {g.is_closed(): <2} ")
-    
-def toBytes(str):
-    return bytes(str.encode())
 
 def home():
     s.send(toBytes("movej([-4.77,-2.06,1.44,-1.01,-1.62,1.46], a=0.50, v=0.50)"+"\n"))
