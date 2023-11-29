@@ -19,7 +19,7 @@ senser_sampling = 0.05
 
 global damage=0
 
-list_d = []
+list_d = [0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 GPIO.setwarnings(False)       #disregard warnings
 GPIO.setmode(GPIO.BCM)
@@ -40,7 +40,6 @@ def main():
   while True:
     inspect()
     active()
-    
     active()
     
 
