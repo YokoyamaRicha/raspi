@@ -15,10 +15,28 @@ g.activate()
 
 def main():
   while True:
+    home()
+    grip()
+    
     inspect()
     active()
     active()
+
+def log_info(g):
+    print(f"Pos: {str(g.get_current_position()): >3} "
+          f"Open: {g.is_open(): <2} "
+          f"Closed: {g.is_closed(): <2} ")
     
+def toBytes(str):
+    return bytes(str.encode())
+
+def home():
+    s.send(toBytes("movej([-4.77,-2.06,1.44,-1.01,-1.62,1.46], a=0.50, v=0.50)"+"\n"))
+    time.sleep(4)
+        
+def grip():
+    s.send(toBytes("movej([-4.77,-1.87,2.32,-2.07,-1.62,1.46], a=0.50, v=0.50)"+"\n"))
+    time.sleep(4)
 
 def inspect():
     s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,-1.66,1.04], a=0.50, v=0.50)"+"\n"))
