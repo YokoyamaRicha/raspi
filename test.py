@@ -53,7 +53,7 @@ def inspect():
     time.sleep(4)
 
 def active():
-  r=random.randint(1, 13)+random.randint(0,9)*0.1
+  r=random.randint(1, 13)
   if r==1:
     s.send(toBytes("movej([-4.35,-2.60,2.15,-2.10,-0.86,0.87], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
