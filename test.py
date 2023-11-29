@@ -18,9 +18,15 @@ def main():
     home()
     grip()
     g.move_and_wait_for_pos(165, 255, 220)
+    home()
     inspect()
     active()
     active()
+    active()
+    active()
+    inspect()
+    home()
+    
 
 def log_info(g):
     print(f"Pos: {str(g.get_current_position()): >3} "
