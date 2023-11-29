@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO   #for using GPIO
 import time      #time control
 import random
 
-HOST = "150.89.169.116"
+HOST = "150.89.169.193"
 PORT = 30002
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -73,7 +73,7 @@ def active():
     s.send(toBytes("movej([-5.08,-2.37,1.85,-0.08,-0.47,-1.42], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
   if r==7:
-    s.send(toBytes("movej([-3.71,-1.61 0.95 -1.04 -1.56 1.33], a=0.50, v=0.50)"+"\n"))'
+    s.send(toBytes("movej([-3.71,-1.61 0.95 -1.04 -1.56 1.33], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
   if r==8:
     s.send(toBytes("movej([-3.81,-1.49,0.78,-0.84,-1.44,-0.41], a=0.50, v=0.50)"+"\n"))
@@ -84,7 +84,7 @@ def active():
   if r==10:
     s.send(toBytes("movej([-3.29,-1.31,0.68,-0.73,-2.11,0.90] a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
-  if r==11
+  if r==11:
     s.send(toBytes("movej([-3.12,-1.34,0.90,-0.71,-2.38,1.24], a=0.50, v=0.50)"+"\n"))
     time.sleep(3)
   if r==12:
