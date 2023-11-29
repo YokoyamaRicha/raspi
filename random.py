@@ -43,6 +43,22 @@ def main():
     active()
     
 
+def epsilon_greedy_selection(epsilon, values, a, b, c):
+    """
+        epsilon-greedy 行動選択
+    """
+    nb_values = len(values)
+    values[1]=values[1]+b
+    values[2]=values[2]+c
+    if np.random.uniform() < epsilon:   # 探索(epsilonの確率で)
+        action = np.random.randint(0, nb_values)
+    else:                               # 知識利用(1-epsilonの確率で)
+        action = np.argmax(values)
+
+    return action
+
+
+
 def inspect():
     s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,-1.66,1.04], a=0.50, v=0.50)"+"\n"))
     time.sleep(4)
