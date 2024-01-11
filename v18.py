@@ -34,8 +34,7 @@ def sensor():            #get distance func
             
         duration = sig_on - sig_off         #calculate duration
         distance = duration*34000/2         #(distance)calculate to [cm]
-        return distance
-        
+        return distance        
 
 def main():
     while True:
@@ -47,5 +46,6 @@ def main():
             None
         time.sleep(sensor_sampling = 0.05)
 
-
+if __name__ == '__main__':
+    main()
 
