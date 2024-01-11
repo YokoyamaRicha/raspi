@@ -1,10 +1,5 @@
-import socket
-import gripper
 import RPi.GPIO as GPIO   #for using GPIO 
 import time      #time control
-
-HOST = "150.89.169.116"
-PORT = 30002
 
 Tring = 27                    #set number
 Echo = 18
@@ -24,10 +19,6 @@ GPIO.setup(cam_trg, GPIO.IN)
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((HOST, PORT))
-g = gripper.RobotiqGripper()
-g.connect(HOST, 63352)
-g.activate()
     
 def main():
     while True:
@@ -51,33 +42,7 @@ def main():
             time.sleep(3)
             inspect()
 
-def log_info(g):
-    print(f"Pos: {str(g.get_current_position()): >3} "
-          f"Open: {g.is_open(): <2} "
-          f"Closed: {g.is_closed(): <2} ")
-    
-def toBytes(str):
-    return bytes(str.encode())
 
-def home():
-    s.send(toBytes("movej([-4.77,-2.06,1.44,-1.01,-1.62,1.46], a=0.50, v=0.50)"+"\n"))
-    time.sleep(4)
-        
-def grip():
-    s.send(toBytes("movej([-4.77,-1.87,2.32,-2.07,-1.62,1.46], a=0.50, v=0.50)"+"\n"))
-    time.sleep(4)
-
-def inspect():
-    s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,-1.66,1.04], a=0.50, v=0.50)"+"\n"))
-    time.sleep(4)
-    
-def OK_box():
-    s.send(toBytes("movej([-3.45,-1.10,1.44,-1.91,-1.59,1.25], a=0.50, v=0.50)"+"\n"))
-    time.sleep(4)
-    
-def NG_box():
-    s.send(toBytes("movej([-3.07,-1.10,1.44,-1.91,-1.59,1.66], a=0.50, v=0.50)"+"\n"))
-    time.sleep(4)
         
 def sensor():            #get distance func
     while True:
@@ -131,4 +96,4 @@ def ur_cw():
 
 if __name__ == '__main__':
     main()
-    s.close()
+
