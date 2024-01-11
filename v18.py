@@ -40,7 +40,7 @@ def main():
     while True:
         if GPIO.input(cam_trg) == 1:
             ser.write(1)
-        elif sensor()>30:
+        elif sensor()<10:
             ser.write(2)
         else:
             None
