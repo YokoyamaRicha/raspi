@@ -48,41 +48,4 @@ def main():
         time.sleep(sensor_sampling = 0.05)
 
 
-def ur_cw():
-    ur_state = 1
-    s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,-1.66,-0.46], a=0.50, v=0.50, t=8)"+"\n"))
-    while True:
-        if GPIO.input(cam_trg) == 1:
-            ur_state = 0
-            break            
-        elif sensor()>30:
-            break
-        else:
-            None
-        time.sleep(senser_sampling)
-
-    s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,-1.66,1.04], a=0.50, v=0.50, t=8)"+"\n"))
-    while (ur_state == 1):
-        if GPIO.input(cam_trg) == 1:
-            ur_state = 0
-            break 
-        elif sensor()<30:
-            break
-        else:
-            None
-        time.sleep(senser_sampling)
-
-    while (ur_state == 1):
-        if GPIO.input(cam_trg) == 1:
-            ur_state = 0
-            break 
-        elif sensor()>30:
-            break
-        else:
-            None
-        time.sleep(senser_sampling)
-    return ur_state
-
-if __name__ == '__main__':
-    main()
 
