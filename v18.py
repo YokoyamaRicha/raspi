@@ -1,12 +1,16 @@
 import RPi.GPIO as GPIO   #for using GPIO 
 import time      #time control
+import serial
+import binascii
+
+ser = serial.Serial('COM6', 115200, timeout = 0.5)
 
 GPIO.setwarnings(False)       #disregard warnings
 
 #sensor
 Tring = 27                    #set number
 Echo = 18
-senser_sampling = 0.05
+sensor_sampling = 0.05
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Tring, GPIO.OUT)   #set pin27 out mode
 GPIO.setup(Echo, GPIO.IN)     #set pin18 in mode
@@ -17,31 +21,6 @@ cam_trg = 26
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(cam_trg, GPIO.IN)
 
-    
-def main():
-    while True:
-        home()
-        time.sleep(2)
-        grip()
-        time.sleep(1)
-        g.move_and_wait_for_pos(165, 255, 220)
-        home()
-        inspect()
-        time.sleep(1)
-        ur = ur_cw()
-        if ur==1:
-            NG_box()
-            g.move_and_wait_for_pos(0, 255, 255)
-            time.sleep(3)
-            inspect()
-        else:
-            OK_box()
-            g.move_and_wait_for_pos(0, 255, 255)
-            time.sleep(3)
-            inspect()
-
-
-        
 def sensor():            #get distance func
     while True:
         GPIO.output(Tring, GPIO.HIGH)       #Tring HIGH
@@ -56,7 +35,19 @@ def sensor():            #get distance func
         duration = sig_on - sig_off         #calculate duration
         distance = duration*34000/2         #(distance)calculate to [cm]
         return distance
-           
+        
+
+def main():
+    while True:
+        if GPIO.input(cam_trg) == 1:
+            ser.write(1)
+        elif sensor()>30:
+            ser.write(2)
+        else:
+            None
+        time.sleep(sensor_sampling = 0.05)
+
+
 def ur_cw():
     ur_state = 1
     s.send(toBytes("movej([-3.63,-2.04,1.58,-1.73,-1.66,-0.46], a=0.50, v=0.50, t=8)"+"\n"))
