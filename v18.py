@@ -1,24 +1,22 @@
 import RPi.GPIO as GPIO   #for using GPIO 
 import time      #time control
 
+GPIO.setwarnings(False)       #disregard warnings
+
+#sensor
 Tring = 27                    #set number
 Echo = 18
-
-cam_trg = 26
-
 senser_sampling = 0.05
-
-
-GPIO.setwarnings(False)       #disregard warnings
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Tring, GPIO.OUT)   #set pin27 out mode
 GPIO.setup(Echo, GPIO.IN)     #set pin18 in mode
 
+
+#detect damage from jetson
+cam_trg = 26
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(cam_trg, GPIO.IN)
 
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
 def main():
     while True:
